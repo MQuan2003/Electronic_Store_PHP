@@ -1,0 +1,45 @@
+.rating-container {
+    max-width: 400px;
+    border-radius: 8px;
+    flex-grow: 1;
+    margin-right: 30px;
+}
+
+.stars {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.star {
+    color: #ccc;
+    transition: color 0.2s;
+}
+
+.star.selected {
+    color: #063A88;
+}
+
+textarea {
+    width: 95%;
+    height: 80px;
+    margin-top: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.Submit-comment {
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 0 !important;
+}
+
+.Submit-comment:hover {
+    background-color: #0056b3;
+}

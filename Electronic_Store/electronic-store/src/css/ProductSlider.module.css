@@ -1,0 +1,120 @@
+.sliderContainer {
+  width: 100%;
+  max-height: 325px;
+  margin: auto;
+  text-align: center;
+}
+
+.sliderWrapper {
+  display: flex;
+  background-color: #0a3d91;
+  padding: 20px;
+  border-radius: 10px;
+  align-items: center;
+  z-index: 0;
+}
+
+.sliderBanner {
+  width: 25%;
+  color: white;
+  padding: 20px;
+}
+
+.sliderBanner h3 {
+  font-size: 24px;
+}
+
+.sliderBanner p {
+  font-size: 18px;
+}
+
+.productSlider {
+  width: 75%;
+  position: relative;
+  
+  z-index: 0;
+}
+
+.productCard {
+  background: white;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 312px;
+  min-width: 0px;
+  height: 229px;
+  position: relative;
+  z-index: 0;
+}
+.productCard img {
+  max-width: fit-content;
+  max-height: 135px;
+}
+
+.discountBadge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #ff6b6b;
+  color: white;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.productCard img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.oldPrice {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.newPrice {
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .sliderWrapper {
+      align-items: center;
+      text-align: center;
+      padding: 10px;
+  }
+
+  .sliderBanner {
+      width: 100%;
+  }
+
+  .productSlider {
+      width: 100%;
+  }
+
+  .productCard {
+      max-width: 100%;
+      min-width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .sliderBanner h3 {
+      font-size: 18px;
+  }
+
+  .sliderBanner p {
+    font-size: 14px;
+  }
+
+  .discountBadge {
+    font-size: 12px;
+    padding: 3px 6px;
+  }
+
+  .oldPrice, .newPrice {
+      font-size: 14px;
+  }
+}

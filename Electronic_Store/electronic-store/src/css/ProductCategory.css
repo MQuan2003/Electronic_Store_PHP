@@ -1,0 +1,48 @@
+.category-tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 10px 0;
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #666;
+  font-size: 20px;
+  font-weight: 200;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.category i {
+  font-size: 36px;
+  margin-bottom: 5px;
+}
+
+.category:hover,
+.category.active {
+  color: black;
+}
+
+.category.active {
+  color: black;
+}
+.category::after {
+  content: "";
+  width: 0%;
+  height: 2px;
+  background-color: #0C68F4;
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: width 0.3s ease-in-out;
+}
+
+.category.active::after {
+  width: 100%;
+}

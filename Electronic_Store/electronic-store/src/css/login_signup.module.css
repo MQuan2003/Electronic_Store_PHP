@@ -1,0 +1,131 @@
+.signup,
+.login {
+  border-radius: 8px;
+  text-align: center;
+  max-width: 600px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.Signup-input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 440px;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 8px 0;
+}
+
+.input-group i {
+  position: absolute;
+  left: 12px;
+  font-size: 18px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px 12px 10px 35px;
+  border: 1px solid black;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+/* Keep me logged in & Terms */
+.agree-term {
+  text-align: left;
+  width: 100%;
+  max-width: 440px;
+  margin-top: 10px;
+}
+
+.forgotPass {
+  text-align: right;
+  width: 100%;
+  max-width: 440px;
+  margin-top: 5px;
+}
+
+.forgotPass a {
+  text-decoration: none;
+  color: #241ae9;
+}
+
+/* Buttons */
+.btn-Signup {
+  border-radius: 5px;
+  outline: none;
+  background-color: #241ae9;
+  cursor: pointer;
+  padding: 12px;
+  width: 100%;
+  max-width: 440px;
+  color: white;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+/* Social Login */
+.text-other-signin {
+  margin-top: 20px;
+}
+
+.btn {
+  gap: 10px;
+  display: flex;
+  max-width: 440px;
+  width: 100%;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.btn-Google,
+.btn-Facebook {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  padding: 10px 15px;
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  gap: 8px;
+}
+
+.btn-Google {
+  border-color: #4285F4;
+  color: #4285F4;
+}
+
+.btn-Facebook {
+  border-color: #1877F2;
+  color: #1877F2;
+}
+
+.btn-Google i,
+.btn-Facebook i {
+  color: inherit;
+  font-size: 18px;
+}
+
+.btn-Google:hover,
+.btn-Facebook:hover {
+  background-color: rgba(0, 0, 255, 0.1);
+}

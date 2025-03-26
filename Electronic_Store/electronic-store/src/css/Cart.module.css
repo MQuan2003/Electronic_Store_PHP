@@ -1,0 +1,33 @@
+.Cart{
+    display: flex;
+    
+    justify-content: space-between;
+}
+
+.payment-product-card{
+    width: 60%;
+    
+}
+.payment-details{
+    width: 40%;
+}
+
+.emptyCart {
+    text-align: center;
+    padding: 20px;
+}
+
+.continueShoppingButton {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.continueShoppingButton:hover {
+    background-color: #0056b3;
+}

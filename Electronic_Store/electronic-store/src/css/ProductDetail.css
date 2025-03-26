@@ -1,0 +1,12 @@
+.BPD {
+    display: flex;
+    justify-content: space-between;
+    /* gap: 20px; */
+}
+.BPD-Comment{
+    margin-top: 40px;
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}

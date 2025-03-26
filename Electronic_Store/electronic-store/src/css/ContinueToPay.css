@@ -1,0 +1,133 @@
+.your-order {
+    max-width: 416px;
+    max-height: 709px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+}
+
+.y-card-container {
+    max-height: 345px;
+
+}
+
+.y-card {
+    height: 86px;
+    display: flex;
+    margin: 16px 0px;
+    border-bottom: #CBCBCB solid 1px;
+    padding: 8px 0px;
+}
+
+.y-card-image {
+    display: flex;
+    align-items: center;
+    max-width: 87px;
+}
+
+.y-card-image img {
+    width: 100%;
+}
+
+.y-card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.y-card-info div {
+    display: flex;
+    justify-content: space-between;
+}
+.y-discount{
+    display: flex;
+    justify-content: space-between;
+}
+.y-discount input {
+    font-size: 16px;
+    height: 36px;
+    width: 67%;
+    text-align: center;
+    border-radius: 8px;
+    color: #717171;
+    border: 1px solid #CBCBCB;
+}
+
+.y-discount button {
+    width: 30%;
+    height: 36px;
+    background: none;
+    border: #0C68F4 solid 1px;
+    color: #0C68F4;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: border 0.4s ease-in-out, color 0.4s ease-in-out;
+}
+
+.y-discount button:hover {
+    border: #000 solid 1px;
+    color: #000;
+}
+
+.y-price {
+    margin-top: 16px;
+    font-size: 16px;
+}
+
+.y-price div {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    color: #333;
+}
+
+.y-price div span:last-child {
+    color: #717171;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #CBCBCB;
+    margin: 12px 0;
+}
+
+.y-price div {
+    display: flex;
+    justify-content: space-between;
+    
+    
+    color: #000;
+}
+
+.y-price div span:last-child {
+    
+}
+
+.continue-to-pay {
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 12px 0;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 16px;
+}
+
+.continue-to-pay:hover {
+    background-color: #0056b3;
+}
+
+.btn-continue button{
+    margin-top: 16px;
+    height: 48px;
+    width: 100%;
+    border-radius: 8px;
+    background-color: #0C68F4;
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+}
