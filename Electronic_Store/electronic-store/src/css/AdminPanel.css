@@ -1,0 +1,40 @@
+.sidebar {
+  width: 250px;
+  background-color: #1a2243;
+  color: white;
+  padding: 20px;
+  height: 100vh;
+  margin: 0 !important;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.sidebar li:hover,
+.sidebar .active {
+  background-color: #2d3b64;
+}
+
+.sidebar .icon {
+  margin-right: 10px;
+}
+
+.badge {
+  background-color: #fff;
+  color: #1a2243;
+  padding: 2px 6px;
+  font-size: 12px;
+  border-radius: 10px;
+  margin-left: auto;
+}

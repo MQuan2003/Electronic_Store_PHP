@@ -45,12 +45,11 @@ const ProductCard = ({ product }) => {
                                 </span>
                             )}
 
-
                         </div>
 
                         <div className="product-rating">
                             <i className="bi bi-star-fill star-icon"></i>
-                            <span className="rating-score">4.3</span>
+                            <span className="rating-score">{product.rating}</span>
                         </div>
                     </div>
                 </div>

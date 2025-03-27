@@ -1,0 +1,40 @@
+.productTable {
+  width: 95%;
+  background: #f9f9f9;
+}
+
+.tableHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background: #f4f4f4;
+}
+
+tr:hover {
+  background: #f1f1f1;
+}
+
+.outOfStock {
+  background: #ffcccc;
+  color: #d80000;
+  padding: 4px 8px;
+  border-radius: 4px;
+}

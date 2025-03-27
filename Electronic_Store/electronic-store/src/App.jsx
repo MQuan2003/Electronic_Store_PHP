@@ -8,6 +8,8 @@ import ProductDetail from './pages/ProductDetail'
 import Payment from './pages/Payment'
 import Cart from './pages/Cart'
 import Checkout from './pages/Checkout'
+import Admin from './pages/Admin'
+
 function App() {
   const [count, setCount] = useState(0)
 
@@ -24,6 +26,7 @@ function App() {
           <Route path="/payment" element={<Payment></Payment>}/>
           
         </Route>
+        <Route path="/admin" element={<Admin></Admin>}></Route>
       </Routes>
     </>
   )
