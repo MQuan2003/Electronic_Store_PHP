@@ -2,12 +2,12 @@ import React from "react";
 import "../../css/TechnicalDetails.css";
 
 const TechnicalDetails = ({ attributes }) => {
-    if (!attributes || Object.keys(attributes).length === 0) {
+    if (!attributes || typeof attributes !== "object" || Object.keys(attributes).length === 0) {
         return <p className="no-details">No technical details available.</p>;
     }
 
-    // Hàm viết hoa chữ cái đầu của key
-    const formatKey = (key) => key.replace(/_/g, " ").replace(/\b\w/g, (char) => char.toUpperCase());
+    const formatKey = (key) => 
+        key.replace(/_/g, " ").replace(/\b\w/g, (char) => char.toUpperCase());
 
     return (
         <div className="technical-detail">

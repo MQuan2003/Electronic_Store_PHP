@@ -1,5 +1,6 @@
-import styles from "../../css/DisplayComment.module.css"
-const DisplayComment = () => {
+import styles from "../../css/DisplayComment.module.css";
+
+const DisplayComment = ({ review }) => {
     return (
         <div className={styles["Comment"]}>
             <div className={styles["user-rating"]}>
@@ -10,20 +11,23 @@ const DisplayComment = () => {
                             alt="User Avatar"
                             className={styles["avatar"]}
                         />
-                        <span>Username</span>
-                        <span style={{ color: "#9E9E9E" }}>2-8-2024</span>
+                        <span>{review.user_name}</span>
+                        <span style={{ color: "#9E9E9E" }}>
+                            {new Date(review.created_at).toLocaleDateString()}
+                        </span>
                     </div>
                     <div>
-                        <span className={styles["rating"]}><i className="bi bi-star-fill star-icon"></i> 4.8</span>
+                        <span className={styles["rating"]}>
+                            {"★".repeat(review.rating)}{"☆".repeat(5 - review.rating)}
+                        </span>
                     </div>
                 </div>
             </div>
             <div className={styles["user-comment"]}>
-                <span>Comment</span>
-
+                <span>{review.comment}</span>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default DisplayComment
+export default DisplayComment;

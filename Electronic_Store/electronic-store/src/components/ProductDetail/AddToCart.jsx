@@ -8,11 +8,11 @@ const AddToCart = ({ product, userId }) => {
 
     const price = parseFloat(product.price);
     const discount = parseFloat(product.discount);
-    const discountedPrice = discount > 0
-    ? (price * (1 - discount / 100)).toFixed(2) // Chia discount cho 100
+const discountedPrice = discount > 0
+    ? (price * (1 - discount)).toFixed(2) // Không chia 100 nữa
     : price.toFixed(2);
 
-    const discountPercentage = discount > 0 ? `${(discount * 100).toFixed(0)}%` : null;
+const discountPercentage = discount > 0 ? `${(discount * 100).toFixed(0)}%` : null;
 
     const updateCart = async () => {
         if (!userId) {

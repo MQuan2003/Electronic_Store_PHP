@@ -25,8 +25,9 @@ const Product = () => {
           url += `category=${selectedCategory}&`;
         }
         if (selectedBrands.length > 0) {
-          url += `brand=${selectedBrands.join(",")}&`;
+          url += `brand=${selectedBrands.join(",")}&`; // Đảm bảo gửi danh sách ID thay vì tên
         }
+
 
         const response = await fetch(url);
         const data = await response.json();

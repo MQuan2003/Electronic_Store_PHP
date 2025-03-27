@@ -18,7 +18,7 @@ const ProductCard = ({ product }) => {
     const discountPercentage = discount > 0 ? `-${(discount * 100).toFixed(0)}%` : null;
 
     // Xử lý ảnh sản phẩm
-    const productImage = product.image_url 
+    const productImage = product.image_url
         ? `${product.image_url}`  // Thêm đường dẫn đầy đủ nếu chỉ có tên file
         : defaultImg;
     console.log(productImage);
@@ -26,7 +26,7 @@ const ProductCard = ({ product }) => {
         <Link to={`/products/${product.id}`}>
             <div className="product-card">
                 {discount > 0 && <div className="product-discount">{discountPercentage}</div>}
-                
+
                 <div className="product-image">
                     <img src={productImage} alt={product.name} onError={(e) => e.target.src = defaultImg} />
                 </div>
@@ -37,17 +37,17 @@ const ProductCard = ({ product }) => {
                     <p className="product-name">{product.name}</p>
 
                     <div className="product-footer">
-                        <div>
-                        <span className="product-price">${discountedPrice}</span>
-                        {discount > 0 && (
-                            <span className="product-old-price" style={{ textDecoration: "line-through", color: "gray", marginLeft: "8px" }}>
-                                ${formattedOriginalPrice}
-                            </span>
-                        )}
+                        <div className="product-footer-discount">
+                            <span className="product-price">${discountedPrice}</span>
+                            {discount > 0 && (
+                                <span className="product-old-price" style={{ textDecoration: "line-through", color: "gray", marginLeft: "8px" }}>
+                                    ${formattedOriginalPrice}
+                                </span>
+                            )}
 
 
                         </div>
-                        
+
                         <div className="product-rating">
                             <i className="bi bi-star-fill star-icon"></i>
                             <span className="rating-score">4.3</span>

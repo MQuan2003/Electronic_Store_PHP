@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import "../../css/BasicProductDetails.css";
 
 const BasicProductDetails = ({ product }) => {
-    const images = product.image_urls ? product.image_urls.split(",") : []; // Chuyển chuỗi thành mảng
+    // Chuyển đổi image_url thành mảng
+    const images = product.image_url ? [product.image_url] : [];
     const [mainImage, setMainImage] = useState(images.length > 0 ? images[0] : "https://via.placeholder.com/300");
 
     return (
@@ -27,7 +28,7 @@ const BasicProductDetails = ({ product }) => {
                 <div className="rating-section">
                     <span className="rating"><i className="bi bi-star-fill star-icon"></i> {product.rating || "4.9"}</span>
                     <span className="stick">|</span>
-                    <span className="sold">Sold {product.sold || "0"}</span>
+                    <span className="sold">Sold {product.sales_count || "0"}</span>
                 </div>
 
                 {/* Trạng thái hàng */}
@@ -44,7 +45,7 @@ const BasicProductDetails = ({ product }) => {
                     <ul>
                         <li><strong>Brand:</strong> <span>{product.brand_name || "Unknown"}</span></li>
                         <li><strong>Price:</strong> <span>${product.price}</span></li>
-                        <li><strong>Discount:</strong> <span>{product.discount ? `${product.discount * 100}%` : "No discount"}</span></li>
+                        <li><strong>Discount:</strong> <span>{parseFloat(product.discount) > 0 ? `${parseFloat(product.discount) * 100}%` : "No discount"}</span></li>
                     </ul>
                 </div>
             </div>

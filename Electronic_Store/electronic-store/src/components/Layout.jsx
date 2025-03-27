@@ -14,8 +14,11 @@ const Layout = () => {
             <div className="layout">
                 <Navbar />
                 <main className="content">
+                    <div className="">
                     {showProgressBar && <ProgressBar />}
                     <Outlet />
+                    </div>
+                    
                 </main>
                 <Footer />
             </div>

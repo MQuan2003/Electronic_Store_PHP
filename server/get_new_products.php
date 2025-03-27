@@ -32,5 +32,4 @@ try {
     echo json_encode(["error" => "Lỗi truy vấn: " . $e->getMessage()]);
     http_response_code(500);
 }
-
 ?>
