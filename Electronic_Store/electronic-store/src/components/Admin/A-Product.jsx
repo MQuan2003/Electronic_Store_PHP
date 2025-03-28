@@ -1,61 +1,105 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../css/Admin/A-Product.module.css";
 
-const products = [
-  { id: 1, name: "Men Grey Hoodie", category: "Hoodies", inventory: "96 in stock", color: "Black", price: "$49.90", rating: "5.0 (32 Votes)", image: "grey-hoodie.png", checked: true },
-  { id: 2, name: "Women Striped T-Shirt", category: "T-Shirt", inventory: "56 in stock", color: "White", price: "$34.90", rating: "4.8 (24 Votes)", image: "striped-tshirt.png", checked: true },
-  { id: 3, name: "Women White T-Shirt", category: "T-Shirt", inventory: "78 in stock", color: "White", price: "$40.90", rating: "5.0 (54 Votes)", image: "white-tshirt.png", checked: true },
-  { id: 4, name: "Men White T-Shirt", category: "T-Shirt", inventory: "32 in stock", color: "White", price: "$49.90", rating: "4.5 (31 Votes)", image: "men-white-tshirt.png", checked: false },
-  { id: 5, name: "Women Red T-Shirt", category: "T-Shirt", inventory: "32 in stock", color: "White", price: "$34.90", rating: "4.9 (22 Votes)", image: "red-tshirt.png", checked: true },
-  { id: 6, name: "Women White T-Shirt", category: "T-Shirt", inventory: "Out of Stock", color: "White", price: "$40.90", rating: "5.0 (54 Votes)", image: "white-tshirt.png", checked: false },
-  { id: 7, name: "Men White T-Shirt", category: "T-Shirt", inventory: "Out of Stock", color: "White", price: "$49.90", rating: "4.5 (31 Votes)", image: "men-white-tshirt.png", checked: false },
-  { id: 8, name: "Women Red T-Shirt", category: "T-Shirt", inventory: "Out of Stock", color: "White", price: "$34.90", rating: "4.9 (22 Votes)", image: "red-tshirt.png", checked: false }
-];
 const ProductTable = ({ onAdd, onEdit }) => {
-  
+  const [products, setProducts] = useState([]);
+  const [error, setError] = useState(null);
+
+  // Gọi API lấy danh sách sản phẩm từ backend
+  useEffect(() => {
+    fetch("http://localhost/PHP/store/server/get_admin_products.php") // Gọi API riêng cho Admin
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "no_data") {
+          setProducts([]);
+        } else {
+          setProducts(data.products);
+        }
+      })
+      .catch((err) => {
+        console.error("Lỗi khi lấy sản phẩm:", err);
+        setError("Không thể tải danh sách sản phẩm!");
+      });
+  }, []);
+
+  // Hàm xử lý xóa sản phẩm
+  const handleDeleteProduct = (id) => {
+    if (!window.confirm("Bạn có chắc muốn xóa sản phẩm này không?")) {
+      return;
+    }
+
+    fetch("http://localhost/PHP/store/server/delete_product.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "success") {
+          alert("Xóa sản phẩm thành công!");
+          // Dùng callback để đảm bảo cập nhật danh sách chính xác
+          setProducts((prevProducts) => prevProducts.filter((product) => product.id !== id));
+        } else {
+          alert("Lỗi: " + data.message);
+        }
+      })
+      .catch((err) => {
+        console.error("Lỗi khi xóa sản phẩm:", err);
+        alert("Không thể xóa sản phẩm!");
+      });
+  };
+
   return (
     <div className={styles.productTable}>
       <div className={styles.tableHeader}>
-        <h2>Products</h2>
+        <h2>Danh sách sản phẩm</h2>
       </div>
+
+      {error && <p className={styles.error}>{error}</p>}
+
       <table className={styles.table}>
         <thead>
           <tr>
             <th>Product</th>
-            <th>Inventory</th>
-            <th>Color</th>
-            <th>Price</th>
+            <th>Category</th>
+            <th>Stock</th>
+            <th>Sale count</th>
             <th>Rating</th>
+            <th>Price</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {products.map((product) => (
-            <tr key={product.id}>
-              <td>
-                <div>
-                  <p>{product.name}</p>
-                  <span>{product.category}</span>
-                </div>
-              </td>
-              <td className={product.inventory.includes("Out of Stock") ? styles.outOfStock : ""}>{product.inventory}</td>
-              <td>{product.color}</td>
-              <td>{product.price}</td>
-              <td>{product.rating}</td>
-              <td>
-                <button onClick={() => onAdd()}>Add</button> | 
-                <button onClick={() => onEdit(product)}>Edit</button> | 
-                <button>Delete</button>
-              </td>
+          {products.length > 0 ? (
+            products.map((product) => (
+              <tr key={product.id}>
+                <td>{product.name}</td>
+                <td>{product.category_name || "Empty"}</td>
+                <td>{product.stock > 0 ? `${product.stock}` : "0"}</td>
+                <td>{product.sales_count > 0 ? `${product.sales_count}` : "0"}</td>
+                <td>{product.rating || "0"}</td>
+                <td>{product.price} VND</td>
+                <td>
+                  <button onClick={() => onEdit(product)}>Sửa</button>
+                  <button onClick={() => handleDeleteProduct(product.id)}>Xóa</button>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="7">Không có sản phẩm nào!</td> {/* Đổi colSpan 6 -> 7 */}
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
+
+      <div>
+        <button onClick={onAdd}>Add new product</button>
+      </div>
     </div>
   );
 };
 
 export default ProductTable;
-
-
-

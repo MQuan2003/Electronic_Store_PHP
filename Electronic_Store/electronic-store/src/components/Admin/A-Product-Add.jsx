@@ -18,7 +18,7 @@ const AddProductForm = ({ onAdd, onBack  }) => {
     setProduct((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formattedProduct = {
       ...product,
@@ -27,7 +27,31 @@ const AddProductForm = ({ onAdd, onBack  }) => {
       discount: parseFloat(product.discount),
       attributes: product.attributes ? JSON.parse(product.attributes) : {}
     };
-    onAdd(formattedProduct);
+  
+    try {
+      const response = await fetch("http://localhost/PHP/store/server/add_product.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formattedProduct)
+      });
+  
+      const data = await response.json();
+      if (data.status === "success") {
+        alert("Thêm sản phẩm thành công!");
+        if (typeof onAdd === "function") {
+          onAdd(formattedProduct);
+        } else {
+          console.warn("onAdd không được truyền hoặc không phải là hàm!");
+        }
+      } else {
+        alert("Lỗi: " + data.message);
+      }
+      
+    } catch (error) {
+      console.error("Lỗi khi gửi yêu cầu:", error);
+      alert("Lỗi kết nối đến server!");
+    }
+  
     setProduct({
       name: "",
       price: "",
@@ -39,6 +63,7 @@ const AddProductForm = ({ onAdd, onBack  }) => {
       image: ""
     });
   };
+  
 
   return (
     
