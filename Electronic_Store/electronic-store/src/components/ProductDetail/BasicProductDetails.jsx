@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../../css/BasicProductDetails.css";
 
 const BasicProductDetails = ({ product }) => {
-    // Chuyển đổi image_url thành mảng
+
     const images = product.image_url ? [product.image_url] : [];
     const [mainImage, setMainImage] = useState(images.length > 0 ? images[0] : "https://via.placeholder.com/300");
 

@@ -9,12 +9,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-include "./db_connect.php"; // Kết nối database
+include "./db_connect.php"; 
 
-// Đọc dữ liệu JSON từ React
 $data = json_decode(file_get_contents("php://input"), true);
 
-// Kiểm tra dữ liệu có đủ không
 if (
     empty($data['name']) || empty($data['price']) || empty($data['stock']) ||
     empty($data['category']) || empty($data['brand']) || empty($data['image'])
@@ -55,10 +53,10 @@ try {
         ":name" => $data['name'],
         ":price" => $data['price'],
         ":stock" => $data['stock'],
-        ":attributes" => json_encode($data['attributes']), // Lưu attributes dạng JSON
+        ":attributes" => json_encode($data['attributes']), 
         ":discount" => $data['discount'] ?? 0,
-        ":category" => $category_id, // Lưu ID thay vì tên
-        ":brand" => $brand_id,       // Lưu ID thay vì tên
+        ":category" => $category_id, 
+        ":brand" => $brand_id, 
 
         ":image" => $data['image']
     ]);

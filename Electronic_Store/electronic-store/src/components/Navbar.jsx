@@ -17,10 +17,15 @@ const Navbar = () => {
 
     useEffect(() => {
         const storedUser = localStorage.getItem("user");
-        if (storedUser) {
-            setUser(JSON.parse(storedUser));
+        try {
+            setUser(storedUser ? JSON.parse(storedUser) : null);
+        } catch (error) {
+            console.error("Lỗi parse JSON:", error);
+            localStorage.removeItem("user"); // Xóa dữ liệu lỗi
+            setUser(null);
         }
     }, []);
+    
 
     const handleLogout = () => {
         localStorage.removeItem("user");

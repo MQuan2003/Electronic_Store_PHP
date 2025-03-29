@@ -9,10 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-include "./db_connect.php"; // Kết nối database
-
+include "./db_connect.php";
 try {
-    // Truy vấn lấy tất cả sản phẩm kèm tên danh mục
     $stmt = $conn->prepare("
         SELECT 
             p.id, p.name, p.stock, p.price, p.rating, p.image_url, p.sales_count,

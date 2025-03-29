@@ -11,7 +11,7 @@ try {
     ]);
 } catch (PDOException $e) {
     http_response_code(500);
-    exit(); // Không in ra JSON để tránh lỗi header
+    exit();
 }
 
 ?>

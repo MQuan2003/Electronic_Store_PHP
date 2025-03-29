@@ -9,8 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-include "./db_connect.php"; // Kết nối database
-
+include "./db_connect.php"; 
 try {
     if (!isset($_GET['id'])) {
         echo json_encode(["status" => "error", "message" => "Thiếu ID sản phẩm!"]);
@@ -20,7 +19,6 @@ try {
 
     $id = intval($_GET['id']);
 
-    // Truy vấn sản phẩm
     $stmt = $conn->prepare("
         SELECT p.*, c.name AS category_name, b.name AS brand_name 
         FROM products p
@@ -37,10 +35,8 @@ try {
         exit();
     }
 
-    // Giải mã JSON attributes từ bảng products (nếu có)
     $product["attributes"] = json_decode($product["attributes"], true);
 
-    // Truy vấn đánh giá từ bảng reviews
     $stmt = $conn->prepare("
         SELECT r.*, u.name AS user_name 
         FROM reviews r
@@ -54,7 +50,7 @@ try {
     echo json_encode([
         "status" => "success",
         "product" => $product,
-        "reviews" => $reviews // Thêm review vào API
+        "reviews" => $reviews 
     ]);
 } catch (Exception $e) {
     echo json_encode(["status" => "error", "message" => "Lỗi server!", "error" => $e->getMessage()]);

@@ -18,29 +18,30 @@ function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setErrors({}); 
-        setMessage(""); 
-
+        setErrors({});
+        setMessage("");
+    
         try {
-            const response = await axios.post("http://localhost:3000/user/login", form);
-            const user = response.data.user;
-            localStorage.setItem("user", JSON.stringify(user));
-
-            setMessage(response.data.message);
-            alert("Login successfully");
-            window.location.reload(); 
-            
-        } catch (error) {
-            if (error.response) {
-                setErrors({ login: error.response.data.message || "Invalid email or password" });
-            } else if (error.request) {
-                alert("Server error. Please try again later.");
+            const response = await axios.post("http://localhost/PHP/store/server/login.php", form);
+            console.log("API Response:", response.data); // Debug response
+    
+            if (response.data.status === "success") {
+                const token = response.data.token;
+                localStorage.setItem("token", token);
+                localStorage.setItem("user", JSON.stringify(response.data.user));
+    
+                setMessage(response.data.message);
+                alert("Login successfully");
+                window.location.reload();
             } else {
-                // Other unexpected errors
-                setErrors({ login: "An unexpected error occurred. Please try again." });
+                setErrors({ login: response.data.message });
             }
+        } catch (error) {
+            console.error("Login error:", error);
+            setErrors({ login: "Có lỗi xảy ra, vui lòng thử lại." });
         }
     };
+    
 
     return (
         <div className={styles.login}>

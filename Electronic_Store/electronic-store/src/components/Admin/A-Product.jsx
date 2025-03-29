@@ -5,9 +5,8 @@ const ProductTable = ({ onAdd, onEdit }) => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
 
-  // Gọi API lấy danh sách sản phẩm từ backend
   useEffect(() => {
-    fetch("http://localhost/PHP/store/server/get_admin_products.php") // Gọi API riêng cho Admin
+    fetch("http://localhost/PHP/store/server/get_admin_products.php") 
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "no_data") {
@@ -39,7 +38,6 @@ const ProductTable = ({ onAdd, onEdit }) => {
       .then((data) => {
         if (data.status === "success") {
           alert("Xóa sản phẩm thành công!");
-          // Dùng callback để đảm bảo cập nhật danh sách chính xác
           setProducts((prevProducts) => prevProducts.filter((product) => product.id !== id));
         } else {
           alert("Lỗi: " + data.message);

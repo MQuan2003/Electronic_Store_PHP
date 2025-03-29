@@ -110,7 +110,7 @@ const EditProductForm = ({ productData, onUpdate }) => {
       <label>
         Category:
         <select name="category" value={product.category || ""} onChange={handleChange} required>
-          <option value="">Chọn danh mục</option>
+          <option value="">Category</option>
           {categories.map((cat) => (
             <option key={cat.id} value={cat.id}>
               {cat.name}
@@ -121,7 +121,7 @@ const EditProductForm = ({ productData, onUpdate }) => {
       <label>
         Brand:
         <select name="brand" value={product.brand || ""} onChange={handleChange} required>
-          <option value="">Chọn thương hiệu</option>
+          <option value="">Brand</option>
           {brands.map((brand) => (
             <option key={brand.id} value={brand.id}>
               {brand.name}

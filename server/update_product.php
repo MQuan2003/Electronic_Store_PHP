@@ -28,12 +28,11 @@ $name = trim($data["name"]);
 $price = floatval($data["price"]);
 $stock = intval($data["stock"]);
 $discount = isset($data["discount"]) ? floatval($data["discount"]) : 0;
-$category_id = intval($data["category"]); // Nhận trực tiếp ID
-$brand_id = intval($data["brand"]); // Nhận trực tiếp ID
+$category_id = intval($data["category"]);
+$brand_id = intval($data["brand"]);
 $image = trim($data["image"]);
 $attributes = isset($data["attributes"]) ? json_encode($data["attributes"]) : "{}";
 
-// Cập nhật sản phẩm
 $query = "UPDATE products 
 SET name = :name, 
     price = :price, 

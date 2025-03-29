@@ -9,16 +9,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-include "./db_connect.php"; // Kết nối database
+include "./db_connect.php"; 
 
 try {
-    // Truy vấn danh sách thương hiệu
     $stmt = $conn->prepare("SELECT id, name FROM brands ORDER BY name ASC");
     $stmt->execute();
     
     $brands = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-    echo json_encode($brands ?: []); // Trả về mảng rỗng nếu không có thương hiệu nào
+    echo json_encode($brands ?: []); 
 } catch (PDOException $e) {
     echo json_encode(["error" => "Lỗi truy vấn: " . $e->getMessage()]);
     http_response_code(500);

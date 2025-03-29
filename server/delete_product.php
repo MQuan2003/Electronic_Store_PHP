@@ -4,8 +4,7 @@ header("Content-Type: application/json");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-include_once __DIR__ . "/db_connect.php"; // Sử dụng kết nối PDO
-
+include_once __DIR__ . "/db_connect.php"; 
 $data = json_decode(file_get_contents("php://input"), true);
 
 if (!isset($data["id"])) {
@@ -15,7 +14,6 @@ if (!isset($data["id"])) {
 
 $product_id = intval($data["id"]);
 
-// Kiểm tra sản phẩm có tồn tại không
 $check_query = "SELECT id FROM products WHERE id = :id";
 $stmt = $conn->prepare($check_query);
 $stmt->execute(["id" => $product_id]);
@@ -25,11 +23,9 @@ if ($stmt->rowCount() === 0) {
     exit();
 }
 
-// Xóa dữ liệu liên quan trước khi xóa sản phẩm
 $conn->prepare("DELETE FROM order_items WHERE product_id = :id")->execute(["id" => $product_id]);
 $conn->prepare("DELETE FROM cart WHERE product_id = :id")->execute(["id" => $product_id]);
 
-// Xóa sản phẩm
 $delete_query = "DELETE FROM products WHERE id = :id";
 $stmt = $conn->prepare($delete_query);
 

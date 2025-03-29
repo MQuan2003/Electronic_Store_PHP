@@ -9,18 +9,17 @@ const Admin = () => {
   const [view, setView] = useState("Products"); // Default view
   const [editProduct, setEditProduct] = useState(null);
   const [editUser, setEditUser] = useState(null);
-  const [refresh, setRefresh] = useState(false); // ✅ Thêm trạng thái để refresh danh sách sản phẩm
-  const [previousView, setPreviousView] = useState("Products"); // ✅ Lưu lại trang trước
-
+  const [refresh, setRefresh] = useState(false); 
+  const [previousView, setPreviousView] = useState("Products"); 
   // Handlers for Products
   const handleAddProduct = () => {
-    setPreviousView(view); // ✅ Lưu lại trang hiện tại
+    setPreviousView(view); 
     setView("AddProduct");
   };
 
   const handleEditProduct = (product) => {
     setEditProduct(product);
-    setPreviousView(view); // ✅ Lưu lại trang hiện tại
+    setPreviousView(view);
     setView("EditProduct");
   };
 
@@ -34,7 +33,7 @@ const Admin = () => {
       .then((data) => {
         if (data.status === "success") {
           alert("Cập nhật sản phẩm thành công!");
-          setRefresh((prev) => !prev); // ✅ Kích hoạt refresh danh sách
+          setRefresh((prev) => !prev); 
           handleBack();
         } else {
           alert("Lỗi: " + data.message);
@@ -58,7 +57,6 @@ const Admin = () => {
     setView("EditUser");
   };
 
-  // ✅ Quay lại trang trước đó
   const handleBack = () => setView(previousView);
 
   return (

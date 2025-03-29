@@ -25,7 +25,7 @@ const Product = () => {
           url += `category=${selectedCategory}&`;
         }
         if (selectedBrands.length > 0) {
-          url += `brand=${selectedBrands.join(",")}&`; // Đảm bảo gửi danh sách ID thay vì tên
+          url += `brand=${selectedBrands.join(",")}&`;
         }
 
 
